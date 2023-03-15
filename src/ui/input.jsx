@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 export const Input = ({
   label,
   type = "text",
@@ -10,11 +8,10 @@ export const Input = ({
   return (
     <div className="form-floating">
       <input
+        required
         type={type}
         className="form-control"
         placeholder={placeholder}
-        required
-        autoComplete="off"
         value={state}
         onChange={(e) => setState(e.target.value)}
       />

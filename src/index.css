@@ -4,7 +4,6 @@
   box-sizing: border-box;
 }
 
-
 .logo_block img {
   width: 100px;
   height: 40px;
@@ -15,4 +14,40 @@
   margin: 0 auto;
   width: 400px;
   margin-bottom: 10px;
+}
+.img_in {
+  width: 30px;
+  border-radius: 5px;
+}
+
+.loading {
+  margin-top: 100px;
+  width: 5rem;
+  height: 5rem;
+}
+.not-found {
+  margin-top: 20%;
+}
+.copyright {
+  width: 18px;
+  height: 15px;
+  margin-top: -2px;
+  margin-right: 2px;
+}
+.minus {
+  margin-top: -3px;
+}
+.form {
+  width: 700px !important;
+  margin: 0 auto !important;
+}
+.form div {
+  margin: 0;
+  margin-bottom: 20px;
+}
+.form input {
+  width: 700px;
+}
+.form textarea {
+  width: 700px;
 }
