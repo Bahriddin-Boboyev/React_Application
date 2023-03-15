@@ -30,12 +30,17 @@ export const Navbar = () => {
       <nav className="d-inline-flex mt-2 mt-md-0 ms-md-auto">
         {loggedIn ? (
           <div className="d-flex align-content-center justify-content-between pt-1">
-            <div className="pt-2">
-              <img className="img_in" src={user.image} alt="" />
-            </div>
-            <div className="me-1 text-dark text-decoration-none px-2 pt-2">
-              {user.username}
-            </div>
+            <Link
+              className="d-flex align-content-center justify-content-between text-decoration-none"
+              to={"/profile"}
+            >
+              <div className="pt-2">
+                <img className="img_in" src={user.image} alt="img" />
+              </div>
+              <div className="me-1 text-dark text-decoration-none px-2 pt-2">
+                {user.username}
+              </div>
+            </Link>
 
             <Link
               className="me-3 pt-1 text-dark text-decoration-none"

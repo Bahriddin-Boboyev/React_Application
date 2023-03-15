@@ -2,14 +2,14 @@ import moment from "moment/moment";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { ArticlesService } from "../service/articles";
+import { ArticlesService } from "../../service/articles";
 import {
   getArticlesDetailFailed,
   getArticlesDetailStart,
   getArticlesDetailSuccess,
-} from "../slice/articles";
-import copyright from "../img/copyright.svg";
-import { Loader } from "../ui/loader";
+} from "../../slice/articles";
+import copyright from "../../img/copyright.svg";
+import { Loader } from "../../ui/loader";
 
 export const ArticleDetail = () => {
   const { slug } = useParams();

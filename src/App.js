@@ -11,6 +11,8 @@ import { ArticlesService } from "./service/articles";
 import { getArticlesStart, getArticlesSuccess } from "./slice/articles";
 import { CreateArticle } from "./components/main/create-article";
 import { EditArticle } from "./components/main/edit-article";
+import { Profile } from "./components/main/profile";
+import { EditProfile } from "./components/main/edit-profile";
 function App() {
   const dispatch = useDispatch();
   const getUser = async () => {
@@ -51,6 +53,8 @@ function App() {
         <Route path="/article/:slug" element={<ArticleDetail />} />
         <Route path="/create-article" element={<CreateArticle />} />
         <Route path="/edit-article/:slug" element={<EditArticle />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/edit-profile" element={<EditProfile />} />
         <Route
           path="*"
           element={
