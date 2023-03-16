@@ -1,19 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logo } from "../../constants";
 import { removeItem } from "../../helpers/persistance-storage";
+import { ProfileService } from "../../service/profile";
 import { logoutUser } from "../../slice/auth";
+import {
+  getProfileFailed,
+  getProfileStar,
+  getProfileSuccess,
+} from "../../slice/profile";
 
 export const Navbar = () => {
   const { loggedIn, user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const [search, setSearch] = useState("");
   const handlerLogout = () => {
     dispatch(logoutUser());
     removeItem("token");
     navigate("/login");
+  };
+
+  const searchHandler = async (e) => {
+    e.preventDefault();
+    dispatch(getProfileStar());
+    try {
+      const response = await ProfileService.getFollowProfile(search);
+      dispatch(getProfileSuccess(response.profile));
+      dispatch(getProfileFailed(null));
+    } catch (error) {
+      dispatch(getProfileFailed(error));
+    }
+    navigate("/profiles");
   };
 
   return (
@@ -26,6 +45,23 @@ export const Navbar = () => {
           <img src={logo} alt="logo" />
         </div>
       </Link>
+
+      <form
+        className="form-floating d-flex gap-2 mt-3 align-items-center"
+        onSubmit={searchHandler}
+      >
+        <input
+          required
+          type={"text"}
+          className="form-control"
+          placeholder="Search.."
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <label htmlFor="floatingInput">Search...</label>
+        <button className="btn btn-primary search" onSubmit={searchHandler}>
+          Search...
+        </button>
+      </form>
 
       <nav className="d-inline-flex mt-2 mt-md-0 ms-md-auto">
         {loggedIn ? (

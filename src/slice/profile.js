@@ -3,6 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isLoading: false,
   user: null,
+  error: null,
+  follow: null,
 };
 
 export const ProfileSlice = createSlice({
@@ -29,6 +31,40 @@ export const ProfileSlice = createSlice({
     profileEditFailed: (state) => {
       state.isLoading = false;
     },
+    getProfileStar: (state, action) => {
+      state.isLoading = true;
+      state.user = action.payload;
+    },
+    getProfileSuccess: (state, action) => {
+      state.isLoading = false;
+      state.user = action.payload;
+    },
+    getProfileFailed: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    followProfileStart: (state) => {
+      state.isLoading = true;
+    },
+    followProfileSuccesses: (state, action) => {
+      state.isLoading = false;
+      state.follow = action.payload;
+    },
+    followProfileFailed: (state, action) => {
+      state.isLoading = false;
+      state.follow = action.payload;
+    },
+    delFollowStart: (state) => {
+      state.isLoading = true;
+    },
+    delFollowSuccess: (state, action) => {
+      state.isLoading = false;
+      state.follow = action.payload;
+    },
+    delFollowFailed: (state, action) => {
+      state.isLoading = false;
+      state.follow = action.payload;
+    },
   },
 });
 
@@ -41,4 +77,13 @@ export const {
   profileEditStart,
   profileEditSuccess,
   profileEditFailed,
+  getProfileStar,
+  getProfileSuccess,
+  getProfileFailed,
+  followProfileStart,
+  followProfileSuccesses,
+  followProfileFailed,
+  delFollowStart,
+  delFollowSuccess,
+  delFollowFailed,
 } = ProfileSlice.actions;
