@@ -30,6 +30,7 @@ export const ArticleDetail = () => {
     getArticleDetail();
   }, [slug]);
 
+
   return (
     <>
       {isLoading ? (
@@ -44,14 +45,14 @@ export const ArticleDetail = () => {
                 <small className="fw-medium text-muted">
                   Created at:{" "}
                   <span className="opacity-75">
-                    {moment(articleDetail.createdAt).format("MM DD MMM YYYY")}
+                    {moment(articleDetail.createdAt).format("DD MMM YYYY")}
                   </span>
                 </small>
                 <small className="fw-medium text-muted">
                   Updated at:{" "}
                   <span className="opacity-75">
                     {" "}
-                    {moment(articleDetail.updatedAt).format("MM DD MMM YYYY")}
+                    {moment(articleDetail.updatedAt).format("DD MMM YYYY")}
                   </span>
                 </small>
                 <div className="fw-medium mx-5 minus">
